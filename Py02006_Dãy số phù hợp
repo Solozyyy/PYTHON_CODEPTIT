@@ -1,0 +1,15 @@
+from math import *
+from sys import *
+
+for _ in range(int(input())):
+    n = input()
+    a = [int(i) for i in input().split()]
+    b = [int(i) for i in input().split()]
+    check = True
+    a.sort()
+    b.sort()
+    for i in range(len(a)):
+        if a[i] > b[i]:
+            check = False
+            break
+    print("YES" if check == True else "NO")
