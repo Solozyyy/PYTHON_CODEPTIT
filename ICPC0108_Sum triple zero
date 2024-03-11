@@ -1,0 +1,19 @@
+tc = int(input())
+
+while tc>0:
+    tc-=1
+    n = int(input())
+    a = list(map(int,input().split()))
+    cnt = 0
+    b = sorted(a)
+    for i in range(len(b) - 2):
+        l = i + 1
+        r = len(b) - 1
+        while(l < r):
+            if (b[i] + b[l] + b[r]) > 0: r-=1
+            elif (b[i] + b[l] + b[r]) < 0: l+=1
+            elif (b[i] + b[l] + b[r]) == 0: 
+                cnt+=1
+                l += 1
+    
+    print(cnt)
