@@ -1,0 +1,22 @@
+from math import *
+
+def trans(n):
+    if len(n) <= 3: 
+        print(n)
+        return
+    n = n[::-1]
+    tmp = ""
+    while len(n) % 3 != 0:
+        n += '.'
+    cnt = 0
+    while cnt < len(n):
+        for i in range(3):
+            tmp += n[cnt + i]
+        if cnt + 3 < len(n) - 1: tmp += ','
+        cnt += 3
+    tmp = tmp[::-1]
+    for i in range(len(tmp)):
+        if tmp[i] != '.': print(tmp[i], end = '')
+
+n = input()
+trans(n)
