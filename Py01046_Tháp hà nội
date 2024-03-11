@@ -1,0 +1,13 @@
+#for tc in range(int(input())):
+
+def tower(n, a, b, c):
+    if(n == 1): 
+        print(str(a) + ' -> ' + str(c))
+        return
+    tower(n-1,a,c,b)
+    tower(1,a,b,c)
+    tower(n-1,b,a,c)
+
+a = int(input())
+tower(a,'A', 'B', 'C')
+    
