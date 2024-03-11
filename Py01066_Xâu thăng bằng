@@ -1,0 +1,10 @@
+from math import *
+
+def check(n, m):
+    for i in range(1, len(n)):
+        if abs(ord(n[i]) - ord(n[i-1])) != abs(ord(m[i]) - ord(m[i-1])): return False
+    return True
+
+for _ in range(int(input())):
+    n = input()
+    print("YES" if check(n, n[::-1]) == True else "NO")
