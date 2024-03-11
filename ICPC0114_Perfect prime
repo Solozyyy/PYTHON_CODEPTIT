@@ -1,0 +1,20 @@
+from math import *
+
+def checknto(a):
+    if(a < 2): return False
+    for i in range(2,isqrt(a) + 1):
+        if a%i == 0: return False
+    return True
+
+for tc in range(int(input())):
+    n = int(input())
+    check = True
+    if(checknto(n)):
+        a = str(n)
+        for item in a:
+            if(not checknto(int(item))):
+                check = False
+                break
+        if(check): print("Yes")
+        else: print("No")
+    else: print('No')
