@@ -1,0 +1,19 @@
+for tc in range(int(input())):
+    n = int(input())
+    nho = 0
+    ans = ""
+    if n < 10: 
+        print(n)
+        continue
+    while(n > 10):
+        a = n%10 + nho
+        if(a >= 5):
+            ans += '0'
+            nho = 1
+        else:
+            ans += '0'
+            nho = 0
+        n//=10    
+    ans = ans[::-1]
+    if(nho == 1): n+=1
+    print(n,ans,sep ="")
