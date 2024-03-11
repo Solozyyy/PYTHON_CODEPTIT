@@ -1,0 +1,14 @@
+from math import *
+
+P = "ABCDEFGHIJKLMNOPQRSTUVWXYZ_."
+
+while True:
+    S = input()
+    if(S == '0'): break
+    k, s = S.split()
+    k = int(k)
+    tmp = ""
+    for i in s:
+        j = P.find(i)
+        tmp += P[(j+k)%28]
+    print(tmp[::-1])
