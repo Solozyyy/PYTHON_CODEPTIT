@@ -1,0 +1,23 @@
+from math import *
+
+def trans(n):
+    idx, tmp, ans = 0, "", -1
+    while(idx < len(n) - 1):
+        if n[idx].isdigit():
+            tmp += n[idx]
+        else:
+            if(tmp != ""):
+                ans = max(ans, int(tmp))
+                tmp = ""
+        idx += 1
+    if(n[len(n) - 1].isdigit()):
+        if(n[len(n)-1].isdigit()):
+            tmp += n[len(n)-1]
+            ans = max(ans, int(tmp))
+    return ans
+
+t = int(input())
+
+for _ in range(t):
+    n = input()
+    print(trans(n))
