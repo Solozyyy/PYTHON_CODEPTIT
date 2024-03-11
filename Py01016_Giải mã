@@ -1,0 +1,11 @@
+from math import *
+
+for tc in range(int(input())):
+    n = input()
+    ans = ""
+    for i in range(len(n)):
+        if(n[i].isdigit()):
+            tmp = int(n[i])
+            for j in range(tmp):
+                ans += n[i-1]
+    print(ans) 
