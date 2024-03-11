@@ -1,0 +1,12 @@
+for tc in range(int(input())):
+    n,d = map(int,input().split())
+    a = list(map(int,input().split()))
+    b = []
+    for i in range(d):
+        b.append(a[0])
+        a.remove(a[0])
+    c = a + b
+    for item in c:
+        print(item, end = " ")
+    print("")
+    
