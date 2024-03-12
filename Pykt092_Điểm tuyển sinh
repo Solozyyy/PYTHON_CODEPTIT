@@ -1,0 +1,39 @@
+from math import *
+from sys import *
+import re
+
+class SV:
+    def __init__(self, id, name, diem, region, area):
+        self.id = "TS" + '{:02d}'.format(id)
+        tmp = name.split()
+        for i in range(len(tmp)):
+            tmp[i] = tmp[i].capitalize()
+        self.name = ' '.join(tmp)
+        bonus1 = 0
+        bonus2 = 0
+        if region == 'Kinh': 
+            bonus1 = 0
+        else: bonus1 = 1.5
+        if area == 1:
+            bonus2  = 1.5
+        elif area == 2:
+            bonus2 = 1
+        else: bonus2 = 0
+        self.total = diem + bonus1 + bonus2
+        if self.total >= 20.5: self.state = "Do"
+        else: self.state = "Truot"
+    def __str__(self):
+        return f"{self.id} {self.name} {self.total:.1f} {self.state}"
+
+
+a = []
+for _ in range(int(input())):
+    name = input()
+    mark = float(input())
+    region = input()
+    area = int(input())
+    a.append(SV(_+1, name, mark, region, area))
+
+a.sort(key = lambda x : (-x.total, x.id))
+for i in a: print(i)
+
