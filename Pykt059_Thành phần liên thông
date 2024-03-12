@@ -1,0 +1,22 @@
+from math import *
+from sys import *
+
+V, E, u = map(int,input().split())
+edge = [[] for _ in range(V + 5)]
+check = [False] * (V + 5)
+
+def dfs(u):
+    global edge, check
+    check[u] = True
+    for i in edge[u]:
+        if not check[i]:
+            dfs(i)
+
+for i in range(E):
+    x, y = map(int, input().split())
+    edge[x].append(y)
+    edge[y].append(x)
+
+dfs(u)
+for i in range(1, V + 1):
+    if not check[i]: print(i)
