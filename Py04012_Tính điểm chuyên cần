@@ -1,0 +1,69 @@
+from sys import *
+from math import *
+import re 
+
+INT_MIN = -maxsize + 1
+INT_MAX = maxsize - 1
+
+class SV:
+    def __init__(self, id, name, grade, mark, state):
+        self.id = id
+        self.name = name
+        self.grade = grade
+        self.mark = mark
+        self.state = state
+    
+
+n = int(input())
+a = []
+for _ in range(n):
+    id = input()
+    name = input()
+    grade = input()
+    a.append([id,name,grade])
+
+arr = []
+for _ in range(n):
+    total = 10
+    state = ""
+    name, id, grade = "", "",""
+    id1, x = map(str, input().split())
+    for i in range(n):
+        if a[i][0] == id1:
+            id = a[i][0]
+            name = a[i][1]
+            grade = a[i][2]
+            for j in range(len(x)):
+                if x[j] == 'x': continue
+                elif x[j] == 'm': total -=1
+                elif x[j] == 'v': total -=2
+            break
+    if total <= 0: 
+        total = 0
+        state = "KDDK"
+    arr.append(SV(id, name, grade, total, state)) 
+
+cnt = 0
+for i in range(len(a)):
+    check = 0
+    while cnt < len(arr):
+        if a[i][0] == arr[check].id:
+            print(arr[check].id, arr[check].name, arr[check].grade, arr[check].mark, arr[check].state)
+            cnt += 1
+            break
+        else: check += 1
+""" 
+3
+B19DCCN999
+Le Cong Minh
+D19CQAT02-B
+B19DCCN998
+Tran Truong Giang
+D19CQAT02-B
+B19DCCN997
+Nguyen Tuan Anh
+D19CQCN04-B
+B19DCCN998 xxxmxmmvmx
+B19DCCN997 xmxmxxxvxx
+B19DCCN999 xvxmxmmvvm
+ """
