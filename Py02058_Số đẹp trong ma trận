@@ -1,0 +1,35 @@
+from sys import *
+from math import *
+
+INT_MIN = -maxsize + 1
+INT_MAX = maxsize - 1
+
+def check(n):
+    if len(n) < 2: return False
+    if n == n[::-1]: return True
+    return False
+
+rows, cols = map(int, input().split())
+
+arr = []
+ans = []
+maxx = INT_MIN
+minn = INT_MAX
+for i in range(rows):
+    a = [int(i) for i in input().split()]
+    arr.append(a)
+    for i in a:
+        maxx = max(i, maxx)
+        minn = min(i, minn)
+
+for i in range(rows):
+    for j in range(len(arr[i])):
+        if arr[i][j] == maxx - minn:
+            ans.append('Vi tri [' + str(i) + '][' + str(j) + ']')
+
+if len(ans) == 0: print("NOT FOUND")
+else:
+    print(maxx - minn)
+    for i in ans:
+        print(i)
+
