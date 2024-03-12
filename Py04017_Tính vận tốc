@@ -1,0 +1,44 @@
+from sys import *
+from math import *
+
+INT_MIN = -maxsize + 1
+INT_MAX = maxsize - 1
+
+class People:
+    def __init__(self, name, place, v):
+        a = [i[0] for i in name.split()]
+        b = [i[0] for i in place.split()]
+        self.id = ''.join(b) + ''.join(a)
+        self.name = name
+        self.place = place
+        self.v = v
+
+    def __str__(self):
+        return f"{self.id} {self.name} {self.place} {round(self.v)} Km/h"
+    
+arr = []
+for _ in range(int(input())):
+    hour, mins = "", ""
+    name = input()
+    place = input()
+    time = input().split(':')
+    hour = int(time[0])
+    mins = int(time[1])
+    v = 120 / (hour - 6 + mins / 60)
+    arr.append(People(name, place, v))
+sorted_arr = sorted(arr, key = lambda x: (-x.v))
+print(*sorted_arr, sep = '\n') 
+
+
+""" 
+3
+Tran Vu Minh
+Ha Noi
+8:30
+Vu Ngoc Hoang
+Hoa Binh
+23:20
+Pham Dinh Tan
+An Giang
+8:45
+ """
