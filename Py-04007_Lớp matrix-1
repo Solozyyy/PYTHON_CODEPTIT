@@ -1,0 +1,37 @@
+from math import *
+
+class matrix:
+    def __init__(self, rows, cols, element):
+        self.rows = rows
+        self.cols = cols
+        self.element = element     
+    def transpose(self):
+        return matrix(self.cols, self.rows, 
+        [[self.element[j][i] 
+          for j in range(self.rows)] 
+          for i in range(self.cols)])
+    def multiple(self, other):
+        res = [[0 for i in range(other.cols)] 
+                for j in range(self.rows)]
+        for i in range(self.rows):
+            for j in range(other.cols):
+                for k in range(self.cols):
+                    res[i][j] += self.element[i][k] * other.element[k][j]
+        return matrix(self.rows, self.cols, res)
+
+def read_matrix():
+    n, m = map(int, input().split())
+    elements = [list(map(int, input().split())) 
+                for i in range (n)]
+    return matrix(n, m, elements)
+
+def print_matrix(matrix):
+    for row in matrix.element:
+        print(' '.join(map(str, row)))
+
+if __name__ == '__main__':
+    for t in range(int(input())):
+        a = read_matrix()
+        b = a.transpose()
+        c = a.multiple(b)
+        print_matrix(c)
