@@ -1,0 +1,38 @@
+from math import *
+from sys import *
+
+m = 0
+a = []
+x = []
+check = []
+
+def result():
+    global a, x, m
+    tmp = ""
+    for i in range(1, m + 1):
+        tmp += str(x[i])
+    a.append(tmp)
+
+def Try(i):
+    global m, x, check
+    for j in range(1, m + 1):
+        if check[j] == False:
+            x[i] = j
+            check[j] = True
+            if i == m: result()
+            else: Try(i+1)
+            check[j] = False
+
+
+for _ in range(int(input())):
+    m = int(input())
+    check = [False] * (m + 1)
+    x = [0] * (m + 1)
+    Try(1)
+    a.reverse()
+    print(len(a))
+    for i in a:
+        print(i, end = " ")
+    print()
+    a.clear()
+    
