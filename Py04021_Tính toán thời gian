@@ -1,0 +1,30 @@
+from sys import *
+from math import *
+
+class GV:
+    def __init__(self, id, name, st, en):
+        self.id = id
+        self.name = name
+        s1 = st.split(':')
+        s1_hour = int(s1[0])
+        s1_min = int(s1[1])
+        s2 = en.split(':')
+        s2_hour = int(s2[0])
+        s2_min = int(s2[1])
+        if s2_min - s1_min < 0:
+            self.m = 60 + (s2_min - s1_min)
+            self.h = s2_hour - s1_hour - 1
+        else:
+            self.m = s2_min - s1_min
+            self.h = s2_hour - s1_hour
+        self.cmp = self.h * 60 + self.m
+    def __str__(self):
+        return f"{self.id} {self.name} {self.h} gio {self.m} phut"
+
+arr = []
+for _ in range(int(input())):
+    arr.append(GV(input(), input(), input(), input()))
+
+arr.sort(key = lambda x: -x.cmp)
+for i in arr:
+    print(i)
