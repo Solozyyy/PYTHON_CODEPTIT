@@ -1,0 +1,36 @@
+from math import *
+from sys import *
+from decimal import Decimal, ROUND_UP
+
+class SV:
+    def __init__(self, id, name, m1, m2, m3):
+        self.id = "SV" + '{:02d}'.format(id)
+        for i in range(len(name)):
+            name[i] = name[i].capitalize()
+        self.name = ' '.join(name)
+        tmp = (m1*3 + m2*3 + m3*2) / 8
+        tmp = Decimal(str(tmp))
+        self.total = tmp.quantize(Decimal('0.00'), rounding = ROUND_UP)
+    def __str__(self):
+        return f"{self.id} {self.name} {self.total}"
+    
+a = []
+for _ in range(int(input())):
+    name = input()
+    m1 = float(input())
+    m2 = float(input())
+    m3 = float(input())
+    a.append(SV(_+1, name.split(), m1, m2, m3))
+
+cnt = 1
+a.sort(key = lambda x : (-x.total, x.id))
+print(a[0], cnt)
+
+for i in range(1, len(a)):
+    if a[i].total != a[i-1].total: 
+        print(a[i], cnt + 1)
+    else:
+        print(a[i], cnt)
+    cnt += 1
+
+
