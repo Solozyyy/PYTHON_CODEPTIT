@@ -1,0 +1,15 @@
+from math import *
+
+class PSo:
+    def __init__(self, tu, mau):
+        self.tu = int(tu)
+        self.mau = int(mau)
+    def Rutgontu(self):
+        return self.tu // gcd(self.tu, self.mau)
+    def Rutgonmau(self):
+        return self.mau // gcd(self.tu, self.mau) 
+
+if __name__ == '__main__':
+    tu, mau = map(int,input().split())
+    a = PSo(tu,mau)
+    print(a.Rutgontu(), a.Rutgonmau(), sep = '/')
