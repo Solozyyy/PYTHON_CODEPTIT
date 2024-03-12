@@ -1,0 +1,25 @@
+from sys import *
+from math import *
+
+fi = open("DATA.in")
+stdin = fi
+
+def check_num(n):
+    if len(n) >= 10: return False
+    for i in n:
+        if not i.isdigit(): return False
+    return True
+
+f = stdin.read()
+arr = f.split()
+
+arr = [word for word in arr if not check_num(word)]
+
+arr.sort()
+
+print(' '.join(arr))
+
+""" for i in range(len(arr)):
+    for j in range(len(arr[i])):
+        if not check_num(arr[i][j]): print(arr[i][j], end = " ")
+ """
