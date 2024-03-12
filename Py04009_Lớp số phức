@@ -1,0 +1,30 @@
+from math import *
+from sys import *
+
+class Complex:
+    def __init__(self, real, imag):
+        self.real = int(real)
+        self.imag = int(imag)
+    def plus(self, other):
+        real = self.real + other.real
+        imag = self.imag + other.imag
+        return Complex(real, imag)
+    def mul(self, other):
+        real = self.real * other.real - self.imag * other.imag
+        imag = self.real * other.imag + self.imag * other.real
+        return Complex(real, imag)
+    def __str__(self):
+        if self.imag > 0: 
+            return f"{self.real} + {self.imag}i"
+        elif self.imag < 0:
+            return f"{self.real} - {-self.imag}i"
+        else: return f"{self.real}"
+
+for _ in range(int(input())):
+    a = [int(i) for i in input().split()]
+    A = Complex(a[0], a[1])
+    B = Complex(a[2], a[3])
+    tmp = A.plus(B)
+    C = tmp.mul(A)
+    D = tmp.mul(tmp)
+    print(C, D, sep = ', ')
