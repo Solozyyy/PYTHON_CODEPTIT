@@ -1,0 +1,43 @@
+from math import *
+from sys import *
+
+V, E = 0, 0
+check = []
+edge = []
+
+def dfs(u):
+    global edge, check
+    check[u] = True
+    for i in edge[u]:
+        if not check[i]:
+            dfs(i)
+
+for _ in range(int(input())):
+    lt = 0
+    ans = []
+    V, E = map(int, input().split())
+    check = [False] * (V + 5)
+    edge = [[] for _ in range(V + 5)]
+    for i in range(E):
+        x, y = map(int, input().split())
+        edge[x].append(y)
+        edge[y].append(x)
+    for i in range(1, V + 1):
+        if not check[i]: 
+            lt += 1
+            dfs(i)
+    for i in range(1, V + 1):
+        check = [False] * (V + 5)
+        cnt = 0
+        check[i] = True
+        for j in range(1, V + 1):
+            if not check[j]:
+                cnt += 1
+                dfs(j)
+        if cnt > lt:
+            ans.append([i, cnt])
+    if len(ans) != 0: 
+        ans.sort(key = lambda x : (-x[1], x[0]))
+        print(ans[0][0])
+    else: print(len(ans))
+    
