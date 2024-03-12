@@ -1,0 +1,21 @@
+from sys import *
+from math import *
+
+class Equip:
+    def __init__(self, id, name, total, price, discount):
+        self.id = id
+        self.name = name
+        self.total = total
+        self.price = price
+        self.discount = discount
+        self.all = self.total * self.price - self.discount
+    def __str__(self):
+        return f"{self.id} {self.name} {self.total} {self.price} {self.discount} {self.all}"
+    
+arr = []
+for _ in range(int(input())):
+    arr.append(Equip(input(), input(), int(input()),int(input()), int(input())))
+
+arr.sort(key = lambda x: -x.all)
+for i in arr:
+    print(i)
