@@ -1,0 +1,29 @@
+from sys import *
+from math import *
+
+fi = open("VANBAN.in")
+stdin = fi
+
+def tn(n):
+    if len(n) < 2: return False
+    if n != n[::-1]: return False
+    return True
+
+f = stdin.read()
+a = f.split()
+maxx = 0
+arr = [i for i in a if tn(i)]
+for i in arr:
+    maxx = max(maxx, len(i))
+
+dict_num = {}
+
+for i in arr:
+    if len(i) == maxx:
+        if i not in dict_num:
+            dict_num[i] = 1
+        else:
+            dict_num[i] += 1
+
+for x,y in dict_num.items():
+    print(x,y)
