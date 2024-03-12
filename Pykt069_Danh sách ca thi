@@ -1,0 +1,38 @@
+from math import *
+from sys import *
+
+class exam:
+    def __init__(self, id, day, time, room):
+        self.id = "C" + '{:03d}'.format(id)
+        tmp = day.split('/')
+        self.day = tmp[0]
+        self.month = tmp[1]
+        self.year = tmp[2]
+        self.date = day
+        t = time.split(':')
+        self.hour = t[0]
+        self.min = t[1]
+        self.time = time
+        self.room = room
+    def __str__(self):
+        return f"{self.id} {self.date} {self.time} {self.room}"    
+
+fi = open("CATHI.in")
+stdin = fi
+n = int(stdin.readline().strip())
+
+a = []
+for _ in range(n):
+    id = _ + 1
+    day = stdin.readline().strip()
+    time = stdin.readline().strip()
+    room = stdin.readline().strip()
+    a.append(exam(id, day, time, room))
+
+a.sort(key = lambda x : (x.year, x.month, x.date, x.hour, x.min, x.id))
+
+
+for i in a:
+    print(i)
+
+
