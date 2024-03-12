@@ -1,0 +1,21 @@
+import sys
+from math import *
+
+INT_MIN = -sys.maxsize - 1
+INT_MAX = sys.maxsize - 1 
+
+rows = int(input())
+arr = []
+for i in range(rows):
+    a = [int(i) for i in input().split()]
+    arr.append(a)
+k = int(input())
+tmp1 = 0
+tmp2 = 0
+
+for i in range(rows):
+    for j in range(len(arr[i])):
+            if i < j: tmp1 += arr[i][j]
+            elif i > j: tmp2 += arr[i][j]
+print("YES" if abs(tmp1 - tmp2) <= k else "NO")
+print(abs(tmp1 - tmp2))
