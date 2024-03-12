@@ -1,0 +1,57 @@
+from math import *
+from sys import *
+
+class Bill:
+    def __init__(self, id, name, smth):
+        self.id = "KH" + '{:02d}'.format(id)
+        tmp = name.split()
+        for i in range(len(tmp)):
+            tmp[i] = tmp[i].capitalize()
+        self.name = ' '.join(tmp)
+        check = smth.split()
+        st = int(check[1])
+        en = int(check[2])
+        dm = 0
+        in_dm = 0
+        out_dm = 0
+        VAT = 0
+        ok = en - st
+        if check[0] == "A":
+            dm = 100
+            if ok < 100:
+                in_dm = ok * 450
+            else: in_dm = 100 * 450
+            if ok > 100:
+                out_dm = (ok - dm) * 1000
+            else: out_dm = 0
+        elif check[0] == "B":
+            dm = 500
+            if ok < 500:
+                in_dm = ok * 450
+            else: in_dm = 500 * 450
+            if ok > 500:
+                out_dm = (ok - dm) * 1000
+            else: out_dm = 0
+        else:
+            dm = 200
+            if ok < 200:
+                in_dm = ok * 450
+            else: in_dm = 200 * 450
+            if ok > 200:
+                out_dm = (ok - dm) * 1000
+            else: out_dm = 0
+        self.VAT = out_dm // 20
+        self.ind = in_dm
+        self.outd = out_dm
+        self.total = in_dm + out_dm + self.VAT
+    def __str__(self):
+        return f"{self.id} {self.name} {self.ind} {self.outd} {self.VAT} {self.total}"
+a = []
+for i in range(int(input())):
+    name = input()
+    smth = input()
+    a.append(Bill(i + 1, name, smth))
+
+a.sort(key = lambda x : -x.total)
+for i in a: print(i)
+
