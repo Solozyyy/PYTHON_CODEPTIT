@@ -1,0 +1,33 @@
+from math import *
+
+class Point:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+    def distance(self, k) :
+        x0 = self.x - k.x
+        y0 = self.y - k.y
+        return sqrt(x0 * x0 + y0 * y0)
+
+class Triangle:
+    def __init__(self, x, y, z):
+        self.x = x
+        self.y = y
+        self.z = z
+    def check(self):
+        a = self.x.distance(self.y)
+        b = self.y.distance(self.z)
+        c = self.x.distance(self.z)
+        s = (a + b + c) / 2
+        if max(a,b,c) * 2 >= a + b + c: return 'INVALID'
+        else: return '{:.2f}'.format(sqrt(s*(s - a)*(s - b)*(s - c)))
+
+a = []
+t = int(input())
+for x in range(t):
+    a += [float(i) for i in input().split()]
+idx = 0
+for i in range(t):
+    print(Triangle(Point(a[idx], a[idx+1]),Point(a[idx+2], a[idx+3]), Point(a[idx+4], a[idx+5])).check())
+    idx += 6
+
