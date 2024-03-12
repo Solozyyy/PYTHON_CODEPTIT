@@ -1,0 +1,61 @@
+from math import *
+from sys import *
+
+to = []
+for i in range(int(input())):
+    s = input()
+    tmp = s.split()
+    check = ""
+    for i in range(1, len(tmp)):
+        check += tmp[i] + " "
+    to.append((tmp[0], check))
+
+class NV:
+    def __init__(self, ma, name, salary, day):
+        self.ma = ma
+        ok = list(ma)
+        self.name = name
+        code = ""
+        year = ""
+        donvi = ""
+        code = ok[0]
+        year = ok[1] + ok[2]
+        donvi = ok[3] + ok[4]
+        heso = 0
+        if code == "A":
+            if 1 <= int(year) <= 3: heso = 10
+            elif 4 <= int(year) <= 8: heso = 12
+            elif 9 <= int(year) <= 15: heso = 14
+            else: heso = 20
+        elif code == "B":
+            if 1 <= int(year) <= 3: heso = 10
+            elif 4 <= int(year) <= 8: heso = 11
+            elif 9 <= int(year) <= 15: heso = 13
+            else: heso = 16
+        elif code == "C":
+            if 1 <= int(year) <= 3: heso = 9
+            elif 4 <= int(year) <= 8: heso = 10
+            elif 9 <= int(year) <= 15: heso = 12
+            else: heso = 14
+        else:
+            if 1 <= int(year) <= 3: heso = 8
+            elif 4 <= int(year) <= 8: heso = 9
+            elif 9 <= int(year) <= 15: heso = 11
+            else: heso = 13
+        for i in range(len(to)):
+            if donvi == to[i][0]:
+                self.dv = to[i][1]
+        self.total = salary * day * heso
+    def __str__(self):
+        return f"{self.ma} {self.name} {self.dv}{self.total * 1000}"
+    
+a = []
+for i in range(int(input())):
+    id = input()
+    name = input()
+    salary = int(input())
+    day = int(input())
+    a.append(NV(id, name, salary, day))
+
+for i in a: print(i)
+
