@@ -1,0 +1,39 @@
+from math import *
+from sys import *
+
+a, b = [], []
+
+with open("DATA1.in") as fi1:
+    a = fi1.read().split()
+    
+with open("DATA2.in") as fi2:
+    b = fi2.read().split()
+
+for i in range(len(a)):
+    a[i] = a[i].lower()
+
+for i in range(len(b)):
+    b[i] = b[i].lower()
+a.sort()
+b.sort()
+
+w_dict1 = {}
+w_dict2 = {}
+
+for i in a:
+    if i not in w_dict1:
+        w_dict1[i] = 1
+    else: w_dict1[i] += 1
+
+for i in b:
+    if i not in w_dict2:
+        w_dict2[i] = 1
+    else: w_dict2[i] += 1
+
+for x,y in w_dict1.items():
+    if x not in w_dict2:
+        print(x, end = " ")
+print()
+for x,y in w_dict2.items():
+    if x not in w_dict1:
+        print(x, end = " ")
