@@ -1,0 +1,36 @@
+from math import *
+
+class HS:
+    def __init__(self, id, name, total):
+        self.id = str(id)
+        self.name = str(name)
+        self.tb = round(total / 12 + 0.01, 1)
+
+def sort_HS(a):
+    a.sort(key = lambda HS:(-HS.tb, HS.id))
+
+def Print(a):
+    print(a.id, a.name, sep = " ", end = " ")
+    print('{:.1f}'.format(a.tb), end = " ")
+    if(a.tb >= 9.0):
+        print('XUAT SAC')
+    elif(8.0 <= a.tb <= 8.9):
+        print('GIOI')
+    elif(7.0 <= a.tb <= 7.9):
+        print('KHA')
+    elif(5.0 <= a.tb <= 6.9):
+        print('TB')
+    else: print('YEU')   
+
+arr = []
+for i in range(int(input())):
+    id = 'HS{:02}'.format(i+1)
+    name = input()
+    m = [float(i) for i in input().split()]
+    total = sum(m) + m[0] + m[1]
+    arr.append(HS(id, name, total))
+
+sort_HS(arr)
+for hs in arr:
+    Print(hs)
+
