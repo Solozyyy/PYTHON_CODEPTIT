@@ -1,0 +1,38 @@
+from math import *
+import sys
+
+"""fi = open("DATA1.in")
+fo = open("SoTAY.txt", "w")
+sys.stdin = fi
+sys.stdout = fo 
+#///////
+fi.close()
+fo.close() """
+
+a = []
+while True:
+    try:
+        a.append(input().split())
+    except EOFError: 
+        break
+
+tmp = ""
+
+def process_words(s):
+    for i in range(len(s)):
+        if s[i] in ['.', '?', '!']: return False
+    return True
+
+tmp = ""
+for i in range(len(a)):
+    for j in range(len(a[i])):
+        if process_words(a[i][j]):
+            tmp += a[i][j] + ' ' 
+        else:
+            ok = ""
+            for k in range(len(a[i][j]) - 1):
+                ok += a[i][j][k]
+            tmp += ok + ' '
+            words = ''.join(tmp)
+            print(words.capitalize()) 
+            tmp = ""
