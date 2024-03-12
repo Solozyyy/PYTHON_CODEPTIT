@@ -1,0 +1,34 @@
+from math import *
+from sys import *
+
+school = []
+for _ in range(int(input())):
+    ky_hieu = input()
+    name = input()
+    school.append(ky_hieu + " " + name)
+
+class SV:
+    global school
+    def __init__(self, id, name, team):
+        self.id = "C" + '{:03d}'.format(id)
+        self.name = name
+        tmp = ""
+        for i in range(4, len(team)):
+            tmp += team[i]
+        check = int(tmp)
+        self.university = school[check - 1]
+    def __str__(self):
+        return f"{self.id} {self.name} {self.university}"
+
+ans = []
+for _ in range(int(input())):
+    name = input()
+    team = input()
+    ans.append(SV(_+1, name, list(team)))
+
+ans.sort(key = lambda x: x.name)
+
+for i in ans:
+    print(i)
+    
+        
