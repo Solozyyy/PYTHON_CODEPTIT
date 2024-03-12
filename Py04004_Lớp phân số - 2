@@ -1,0 +1,24 @@
+from math import *
+
+class Pso:
+    def __init__(self, tu, mau):
+        self.tu = int(tu)
+        self.mau = int(mau)
+
+def rut_gon(tu, mau):
+    print(tu // (gcd(tu, mau)), mau // (gcd(tu, mau)), sep = '/')
+
+if __name__ == '__main__':
+    m, n, p, q = map(int, input().split())
+    a = Pso(m, n)
+    b = Pso(p, q)
+    if(a.mau == b.mau):
+        rut_gon(a.tu + b.tu, a.mau)
+    else:
+        tmp = a.mau
+        a.tu *= b.mau
+        a.mau *= b.mau
+        b.tu *= tmp
+        rut_gon(a.tu + b.tu, a.mau)
+
+
