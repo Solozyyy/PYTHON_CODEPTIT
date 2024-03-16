@@ -1,0 +1,10 @@
+m = int(input())
+v = int(input())
+t = int(input())
+d = input()
+s = v * t
+if d == 'C':
+    pos = s % m
+else:
+    pos = m - (s%m)
+print(pos)
