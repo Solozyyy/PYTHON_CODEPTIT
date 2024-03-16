@@ -1,0 +1,9 @@
+a0, b0, c0 = map(int, input().split())
+a1, b1, c1 = map(int, input().split())
+Start = a0 * 3600 + b0 * 60 + c0
+End = a1 * 3600 + b1 * 60 + c1
+if End < Start:
+    ans = 24 * 3600 - Start + End
+else:
+    ans = End - Start
+print(ans)
