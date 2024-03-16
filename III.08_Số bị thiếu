@@ -1,0 +1,11 @@
+from math import *
+a = []
+for i in range(int(input()) - 1):
+    a.append(int(input()))
+idx = 1
+a.sort()
+for i in a:
+    if i != idx:
+        print(idx)
+        break
+    else: idx += 1
