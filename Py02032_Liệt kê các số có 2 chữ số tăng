@@ -1,0 +1,29 @@
+from math import *
+import sys
+
+""" fi = open("DATA.in")
+fo = open("DATA.out", "w")
+sys.stdin = fi
+sys.stdout = fo  """
+
+n = input()
+a = []
+ok = 0
+num_dict = {}
+if len(n) & 1:
+    ok = len(n) - 1
+else: ok = len(n)
+for i in range(1, ok, 2):
+    tmp = ""
+    tmp += n[i-1] + n[i]
+    if tmp not in num_dict: num_dict[tmp] = 0
+    else: num_dict[tmp] += 1
+
+sorted_dict = sorted(num_dict.items(), key = lambda x: x[0])
+
+for x,y in sorted_dict:
+    print(x, end = " ")
+
+""" fi.close()
+fo.close() 
+ """
