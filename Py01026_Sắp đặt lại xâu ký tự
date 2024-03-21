@@ -1,0 +1,19 @@
+from math import *
+import sys
+
+""" fi = open("DATA.in")
+fo = open("DATA.out", "w")
+sys.stdin = fi
+sys.stdout = fo  """
+
+for i in range(int(input())):
+    s1 = input()    
+    s2 = input()
+    sorted_s1 = sorted(s1)
+    sorted_s2 = sorted(s2)
+    print("Test ", i + 1, ": ", sep = "", end = "")
+    print("YES" if sorted_s1 == sorted_s2 else "NO")
+
+""" fi.close()
+fo.close() 
+ """
