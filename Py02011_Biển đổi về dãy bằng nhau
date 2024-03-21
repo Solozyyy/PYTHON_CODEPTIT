@@ -1,0 +1,28 @@
+from math import *
+import sys
+
+""" fi = open("DATA.in")
+fo = open("DATA.out", "w")
+sys.stdin = fi
+sys.stdout = fo  """
+
+n = input()
+a = [int(i) for i in input().split()]
+num_dict = {}
+
+for i in range(len(a)):
+    num_dict[a[i]] = 0
+    for j in range(len(a)):
+        num_dict[a[i]] += abs(a[i] - a[j])
+
+idx1, idx2 = a[0], num_dict[a[0]]
+for i in range(1, len(a)):
+    if num_dict[a[i]] < idx2:
+        idx1 = a[i]
+        idx2 = num_dict[a[i]]
+
+print(idx2, idx1)
+
+""" fi.close()
+fo.close() 
+ """
