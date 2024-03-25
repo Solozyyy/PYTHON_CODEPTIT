@@ -1,0 +1,15 @@
+from math import *
+from sys import *
+
+def factPrime(n, p):
+    res, i, tmp = 0, 2, p
+    while n >= tmp:
+        res += n // tmp
+        tmp = pow(p, i)
+        i += 1
+    return int(res)
+
+for _ in range(int(input())):
+    n,p = map(int, input().split())
+    print(factPrime(n, p))
+
