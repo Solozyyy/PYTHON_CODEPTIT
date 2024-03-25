@@ -1,0 +1,89 @@
+from sys import *
+from math import *
+
+fi = open("DATA.in")
+stdin = fi
+
+def transfer_to_8(a):
+    b = ""
+    if len(a) % 3 != 0:
+        a = a[::-1]
+        while len(a) % 3 != 0:
+            a += '0'
+        a = a[::-1]
+    cnt = 0
+    while(cnt < len(a)):
+        tmp = 0
+        for i in range(3):
+            if(a[cnt + i] == '0'): continue
+            else: 
+                tmp += 2**(3-i-1)
+        cnt += 3        
+        b += str(tmp)
+    return b
+
+def transfer_to_4(a):
+    b = ""
+    if len(a) % 2 != 0:
+        a = a[::-1]
+        while len(a)%2 != 0:
+            a += '0'
+        a = a[::-1]
+    cnt = 0
+    while cnt < len(a):
+        tmp = 0
+        for i in range(2):
+            if(a[cnt + i] == '0'): continue
+            else:
+                tmp += 2**(2-i-1)
+        cnt += 2
+        b += str(tmp)
+    return b
+
+def transfer_to_16(a):
+    b = ""
+    if len(a) % 4 != 0:
+        a = a[::-1]
+        while len(a)%4 != 0:
+            a += '0'
+        a = a[::-1]
+    cnt = 0
+    while cnt < len(a):
+        tmp = 0
+        for i in range(4):
+            if(a[cnt + i] == '0'): continue
+            else:
+                tmp += 2**(4-i-1)
+        cnt += 4
+        if(tmp < 10):
+            b += str(tmp)
+        else:
+            if(tmp == 10):
+                b += 'A'
+            elif(tmp == 11):
+                b += 'B'
+            elif(tmp == 12):
+                b += 'C'
+            elif(tmp == 13):
+                b += 'D'
+            elif(tmp == 14):
+                b += 'E'
+            elif(tmp == 15):
+                b += 'F'
+    return b
+
+n = int(stdin.readline())
+
+for _ in range(n):
+    b = int(stdin.readline())
+    s = stdin.readline().strip()
+    #print(b,s)
+    if(b == 8):
+        print(transfer_to_8(s))
+    elif(b == 4):
+        print(transfer_to_4(s))
+    elif(b == 16):
+        print(transfer_to_16(s))
+    elif(b == 2):
+        print(s)
+
