@@ -1,0 +1,31 @@
+from math import *
+import sys
+
+""" fi = open('DATA.in')
+fo = open('DATA.out', ' w')
+sys.stdin = fi
+sys.stdout = fo """
+
+m, n = map(int, input().split())
+a = set([int(i) for i in input().split()])
+b = set([int(i) for i in input().split()])
+c, d, e = [], [], []
+for i in a:
+    if i in b: c.append(i)
+for i in a:
+    if i not in b: d.append(i)
+for i in b:
+    if i not in a: e.append(i)
+c.sort()
+d.sort()
+e.sort()
+for i in c: print(i, end = " ")
+print()
+for i in d: print(i, end = " ")
+print()
+for i in e: print(i, end = " ")
+
+""" fi.close()
+fo.close() """
+
+
