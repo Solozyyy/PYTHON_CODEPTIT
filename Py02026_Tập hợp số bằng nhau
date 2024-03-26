@@ -1,0 +1,22 @@
+from math import *
+import sys
+
+""" fi = open('DATA.in')
+fo = open('DATA.out', ' w')
+sys.stdin = fi
+sys.stdout = fo """
+
+n, m = map(int, input().split())
+a = set([int(i) for i in input().split()])
+b = set([int(i) for i in input().split()])
+a = [a]
+b = [b]
+a.sort()
+b.sort()
+if a == b: print("YES")
+else: print("NO")
+
+""" fi.close()
+fo.close() """
+
+
