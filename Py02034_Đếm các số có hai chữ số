@@ -1,0 +1,16 @@
+from math import *
+import sys
+
+a = input()
+idx = len(a)
+if idx % 2 != 0: idx -= 1
+num_dict = {}
+for i in range(0, idx, 2):
+    tmp = ""
+    tmp += a[i] + a[i+1]
+    if tmp not in num_dict:
+        num_dict[tmp] = 1
+    else: num_dict[tmp] += 1
+
+for x, y in num_dict.items():
+    print(x, y)
