@@ -1,0 +1,20 @@
+from sys import *
+from math import *
+
+arr = []
+def take_num(n):
+    res = 0
+    tmp = ""
+    for i in range(len(n)):
+        if n[i].isdigit():
+            res += int(n[i])
+        else: tmp += n[i]
+    ok = ''.join(sorted(tmp))
+    print(ok, res, sep = '')
+
+
+if __name__ == '__main__':
+    for _ in range(int(input())):
+        s = input()
+        take_num(s)
+
