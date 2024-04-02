@@ -1,0 +1,17 @@
+from math import *
+
+def check(n):
+    i = 0
+    while i < len(n):
+        if n[i:i+3] == '688':
+            i+=3
+        elif n[i:i+2] == '68':
+            i+=2
+        elif n[i] == '6':
+            i+=1
+        else: return False
+    return True
+
+if __name__ == '__main__':
+    n = input()
+    print("YES" if check(n) == True else "NO")
