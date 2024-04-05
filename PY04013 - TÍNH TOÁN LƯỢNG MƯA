@@ -1,0 +1,28 @@
+import math
+
+station_dict = {}
+
+n = int(input())
+while n > 0:
+    n -= 1
+    name = input()
+    st = input()
+    en = input()
+    rf = int(input())
+    tmp1 = st.split(':')
+    tmp2 = en.split(':')
+    minute1 = int(tmp1[0]) * 60 + int(tmp1[1])
+    minute2 = int(tmp2[0]) * 60 + int(tmp2[1])
+    hour = (minute2 - minute1) / 60
+    if name not in station_dict:
+        station_dict[name] = {'hour' : hour, 'rainfall' : rf}
+    else:
+        station_dict[name]['hour'] += hour
+        station_dict[name]['rainfall'] += rf
+    
+cnt = 1
+for x,y in station_dict.items():
+    total = float(y['rainfall'] / y['hour'])
+    id = "T" + '{:02d}'.format(cnt)
+    print(id, x, '{:.2f}'.format(total))
+    cnt += 1
