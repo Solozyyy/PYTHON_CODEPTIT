@@ -1,0 +1,6 @@
+import math
+
+h,m,s = map(int, input().split())
+
+ans = (h % 12) * 30 + m * 0.5 + s/120
+print("Angle:", ans)
