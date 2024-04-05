@@ -1,0 +1,23 @@
+import math
+
+def find_most_profitable_range(n, profits):
+    max_profit = 0
+    current_profit = 0
+    start_idx = 0
+    end_idx = 0
+    temp_start_idx = 0
+    for i in range(n):
+        current_profit += profits[i]        
+        if current_profit > max_profit:
+            max_profit = current_profit
+            start_idx = temp_start_idx
+            end_idx = i        
+        if current_profit <= 0:
+            current_profit = 0
+            temp_start_idx = i + 1    
+    return start_idx + 1, end_idx + 1, max_profit
+
+n = int(input())
+profits = list(map(int, input().split()))
+start, end, profit = find_most_profitable_range(n, profits)
+print(start, end, profit)
