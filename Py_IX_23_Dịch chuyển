@@ -1,0 +1,23 @@
+def on_same_line(points):
+    n = len(points)
+    if n <= 2:
+        return True
+    x1, y1 = points[0]
+    x2, y2 = points[1]
+    dx = x2 - x1
+    dy = y2 - y1
+    for i in range(2, n):
+        x, y = points[i]
+        cross_product = dx * (y - y1) - dy * (x - x1)
+        if cross_product != 0:
+            return False
+    return True
+
+n = int(input())
+points = [list(map(int, input().split())) for _ in range(n)]
+if on_same_line(points):
+    result = "No"
+else:
+    result = "Yes\n"
+    result += " ".join(str(i + 1) for i in range(3))
+    print(result)
