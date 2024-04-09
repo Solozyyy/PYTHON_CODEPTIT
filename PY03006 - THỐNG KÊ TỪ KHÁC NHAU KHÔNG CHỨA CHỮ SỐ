@@ -1,0 +1,29 @@
+import re
+
+m = int(input())
+
+a = []
+def check(s):
+    for i in s:
+        if not i.isalpha(): return False
+    return True
+
+words_dict = {}
+while m > 0:
+    m -= 1
+    s = ''
+    for i in input().lower() + ' ':
+        if not check(i):
+            if s != '':  
+                if s in words_dict: words_dict[s] += 1
+                else: words_dict[s] = 1
+                s = ''
+        else: s += i
+
+sorted_dict = sorted(words_dict.items(), key = lambda x : (-x[1], x[0]))
+
+for x, y in sorted_dict:
+    print(x,y)
+
+
+
