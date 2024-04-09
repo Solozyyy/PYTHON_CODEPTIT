@@ -1,0 +1,16 @@
+
+def Tong(s):
+    cnt = 0
+    for i in s:
+        cnt += int(i)
+    return cnt
+
+while True:
+    s = input()
+    if s == '-1': break
+    n, h = map(int, s.split())
+    cnt = 0
+    for i in range(n):
+        if Tong(str(i)) == h: cnt += 1
+    print(cnt)
+    
