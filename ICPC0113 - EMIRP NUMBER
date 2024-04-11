@@ -1,0 +1,29 @@
+import math
+
+Prime = [True] * 1000099
+Prime[0] = Prime[1] = False
+
+def isPrime():
+    global Prime
+    for i in range(2, math.isqrt(1000009)):
+        if Prime[i]:
+            for j in range(i * i, 1000009, i):
+                Prime[j] = False
+
+def check(n):
+    if str(n) == str(n)[::-1]: return False
+    if Prime[n] and Prime[int(str(n)[::-1])]: return True
+    return False
+
+isPrime()
+for _ in range(int(input())):
+    a = []
+    n = int(input())
+    for i in range(13, n):
+        if check(i) and (int(str(i)[::-1]) < n and int(str(i)[::-1]) not in a):
+            tmp = int(str(i)[::-1])
+            a.append(i)
+            a.append(tmp)
+    for i in a:
+        print(i, end = " ")
+    print()
