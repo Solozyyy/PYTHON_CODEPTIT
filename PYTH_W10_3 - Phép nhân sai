@@ -1,0 +1,8 @@
+
+import math
+
+while True:
+    s = input()
+    if s == "-1": break
+    m, n = map(int, s.split())
+    print(n // sum(int(i) for i in str(m)))
