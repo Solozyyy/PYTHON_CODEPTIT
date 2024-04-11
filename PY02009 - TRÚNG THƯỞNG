@@ -1,0 +1,18 @@
+from math import *
+
+for _ in range(int(input())):
+    num_dict = {}
+    a = []
+    for i in range(int(input())):
+        a.append(int(input()))
+    for i in a:
+        if i in num_dict:
+            num_dict[i] += 1
+        else: num_dict[i] = 1
+    sorted_dict = dict(sorted(num_dict.items(), key = lambda x: (-x[1], x[0])))
+    for x, y in sorted_dict.items():
+        print(x)
+        break
+
+
+
