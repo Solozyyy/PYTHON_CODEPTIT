@@ -1,0 +1,16 @@
+from math import *
+
+if __name__ == '__main__':
+    n = int(input())
+    m = [float(i) for i in input().split()]
+    arr = sorted(m)
+    m1 = arr[0]
+    m2 = arr[len(arr)-1]
+    s, cnt = 0, 0
+    for i in m:
+        if i != m1 and i != m2:
+            s += i
+            cnt += 1
+        else: continue
+
+    print('{:.2f}'.format(float(s/cnt)))
