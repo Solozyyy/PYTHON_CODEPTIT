@@ -1,0 +1,29 @@
+
+class Film:
+    global a
+    def __init__(self, id, tl, ngay, stt, so_tap):
+        tl = tl[2: len(tl)]
+        tl = int(tl)
+        self.id = 'P' + '{:03d}'.format(id)
+        self.tl = a[tl - 1]
+        self.ngay = ngay
+        self.stt = stt
+        self.so_tap = so_tap
+    def __str__(self):
+        return f"{self.id} {self.tl} {self.ngay} {self.stt} {self.so_tap}" 
+
+a = []
+n, m = map(int, input().split())
+for _ in range(n):
+    a.append(input())
+
+arr = []
+
+for _ in range(m):
+    arr.append(Film(_ + 1,input(), input(), input(), int(input())))
+
+sorted_arr = sorted(arr, key = lambda x : (int(x.ngay[6:10]), int(x.ngay[3:5]), int(x.ngay[0:2]), x.stt, -x.so_tap))
+for it in sorted_arr:
+    print(it)
+
+
