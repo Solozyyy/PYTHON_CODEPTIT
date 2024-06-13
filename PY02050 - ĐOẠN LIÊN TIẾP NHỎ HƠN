@@ -1,0 +1,19 @@
+
+for _ in range(int(input())):
+    n = int(input())
+    a = [int(i) for i in input().split()]
+    stack = []
+    stack.append(0)
+    ans = [1] * n
+    for i in range(n):
+        while len(stack) != 0 and a[i] >= a[stack[-1]]:
+            stack.pop()
+        if len(stack) != 0:
+            ans[i] = i - stack[-1]
+        else:
+            ans[i] = i + 1
+        stack.append(i)
+    for i in ans:
+        print(i, end = " ")
+    print()
+
